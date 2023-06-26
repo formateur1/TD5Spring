@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -32,5 +33,14 @@ public class AdminController {
 		
 		return "creerActeur";
 	}
+	
+	@GetMapping("deleteActeur/{id}")
+	public String deleteActeur(@PathVariable("id") int id)
+	{
+		ar.delete(ar.getById(id));
+		
+		return "redirect:/acteur/listeActeur";
+	}
+	
 
 }

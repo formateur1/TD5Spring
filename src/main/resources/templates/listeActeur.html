@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Liste Acteur</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+	<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Email</th>
+      <th scope="col">Ville</th>
+      <th scope="col" th:if="${isAdmin}">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="acteur : ${listeA}">
+      <th scope="row" th:text="${acteur.id}"></th>
+      <td th:text="${acteur.nom}"></td>
+      <td th:text="${acteur.prenom}"></td>
+      <td th:text="${acteur.email}"></td>
+      <td th:text="${acteur.ville}"></td>
+      <td th:if="${isAdmin}">
+      	<a th:href="'/admin/deleteActeur/' + ${acteur.id}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+      	<a th:href="'/admin/updateActeur/' + ${acteur.id}"><button type="button" class="btn btn-info">Modifier</button></a>   	
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
