@@ -1,6 +1,7 @@
 package com.inti.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,8 @@ public class ActeurController {
 	@Autowired
 	ActeurRepository ar;
 
+//	@Secured("ROLE_CLIENT")
+	@Secured({"ROLE_ADMIN", "ROLE_CLIENT"})
 	@GetMapping("listeActeur")
 	public String listeActeur(Model m, Authentication auth)
 	{
