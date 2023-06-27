@@ -1,5 +1,6 @@
 package com.inti.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,6 +44,8 @@ public class Utilisateur {
 	private String email;
 	@Column(length = 20)
 	private String tel;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dateNaissance;
 	
 	@Exclude
 	@ManyToMany
